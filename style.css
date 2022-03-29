@@ -73,7 +73,7 @@ li {
 .section-title {
   font-family: var(--font-prime);
   font-weight: 900;
-  font-size: 2.5rem;
+  font-size: max(2.5rem, 2.6vw);
   color: var(--very-dark-desaturated-blue);
   margin-bottom: 2rem;
 }
@@ -81,7 +81,7 @@ li {
 .section-p {
   color: var(--dark-grayish-blue);
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   line-height: 2.2rem;
   margin-bottom: 3.2rem;
 }
@@ -104,16 +104,71 @@ li {
   left: 0;
   width: 120%;
   height: 10px;
-  background-color: var(--soft-red);
   transform: translate(-15px, 1px);
   border-radius: 10px;
-  opacity: 0;
+  opacity: 0.3;
   transition: opacity 300ms ease;
   z-index: -1;
 }
 
 .btn-learn:hover::after {
   opacity: 1;
+}
+
+.btn-yellow::after {
+  background-color: var(--yellow);
+}
+
+.btn-soft-red::after {
+  background-color: var(--soft-red);
+}
+
+/* Flex Component */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex: 100%;
+  max-width: 100%;
+}
+
+.column img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* For Text on img */
+
+.relative {
+  position: relative;
+}
+
+.text-on-image {
+  position: absolute;
+  top: 65%;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+/* Font sizes and colors */
+
+.md {
+  font-size: max(2.3rem, 2vw);
+}
+
+.sm {
+  font-size: 1.3rem;
+}
+
+.darker-cyan {
+  color: var(--dark-desaturated-cyan);
+}
+
+.dark-blue {
+  color: var(--dark-blue);
 }
 
 /* # Header */
@@ -196,10 +251,10 @@ nav {
   opacity: 0;
   transition: all 300ms ease;
   z-index: 1;
-  -webkit-box-shadow: 0px 20px 10px 3px rgba(0, 0, 0, 0.32),
-    -0px 20px 10px 3px rgba(0, 0, 0, 0.32);
-  box-shadow: 0px 20px 10px 3px rgba(0, 0, 0, 0.32),
-    -0px 20px 10px 3px rgba(0, 0, 0, 0.32);
+  -webkit-box-shadow: 0px 20px 10px 3px rgba(0, 0, 0, 0.1),
+    -0px 20px 10px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 20px 10px 3px rgba(0, 0, 0, 0.1),
+    -0px 20px 10px 3px rgba(0, 0, 0, 0.1);
 }
 
 .nav-mobile-active {
@@ -285,24 +340,35 @@ nav {
 
 /* # Section 1: About */
 
-#about {
-  display: flex;
-  flex-direction: column;
-}
-
-.egg-mobile {
+.egg-mobile,
+.red-cup-mobile {
   display: block;
 }
 
-.egg-mobile img {
-  width: 100%;
-}
-
-.egg-desktop {
+.egg-desktop,
+.red-cup-desktop {
   display: none;
 }
 
+/* # Section 2: Services */
+
+.graphic-design {
+  background-image: url(./images/mobile/image-graphic-design.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: 760px;
+}
+
+.photography {
+  background-image: url(./images/mobile/image-photography.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: 760px;
+}
+
 /* # Media Querries */
+
+/* Tablet and bigger */
 
 @media screen and (min-width: 795px) {
   header {
@@ -324,29 +390,72 @@ nav {
 
   /* # Section 1: About desktop */
 
-  #about {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .egg-mobile {
+  .egg-mobile,
+  .red-cup-mobile {
     display: none;
   }
 
-  .egg-desktop {
+  .egg-desktop,
+  .red-cup-desktop {
     display: block;
   }
 
-  .egg-desktop img {
-    height: 100%;
+  .egg-caption {
+    order: 1;
+  }
+
+  .egg-desktop {
+    order: 2;
+  }
+
+  .red-cup-desktop {
+    order: 3;
+  }
+
+  .red-cup-caption {
+    order: 4;
+  }
+
+  .section-caption {
+    text-align: left;
+    padding: 0 10vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+
+  /* Section Services */
+  .graphic-design {
+    background-image: url(./images/desktop/image-graphic-design.jpg);
+  }
+
+  .photography {
+    background-image: url(./images/desktop/image-photography.jpg);
+  }
+
+  .text-on-image {
+    align-items: center;
+    text-align: center;
+    padding: 0 5vw;
   }
 }
 
-/* 
+.scroller {
+  height: 50vh;
+}
 
-kayaknya section about sampe service mending pake grid aja dah
-ribet banget kayaknya kalo pake flexbox mah 
-dicoba lagi besok yak
-direboot aja semua codingnya. good one gem. you did great!
-
-*/
+/* Bigger screeen */
+@media screen and (min-width: 1125px) {
+  .text-on-image {
+    align-items: center;
+    text-align: center;
+    padding: 0 12vw;
+  }
+}
