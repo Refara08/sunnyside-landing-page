@@ -25,12 +25,12 @@
   </head>
   <body>
     <!-- ###Header -->
-    <header class="header">
+    <header id="header" class="header">
       <!-- ## Navigation -->
       <nav>
         <div id="navbar" class="navbar">
           <div class="navbar-shadow"></div>
-          <a href="#" class="logo">
+          <a href="#header" class="logo">
             <img src="./images/logo.svg" alt="" />
           </a>
           <ul class="nav-desktop">
@@ -139,6 +139,29 @@
       >. Coded by <a href="#">Your Name Here</a>.
     </div> -->
 
+    <script
+      src="https://code.jquery.com/jquery-3.5.0.min.js"
+      integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+      crossorigin="anonymous"
+    ></script>
     <script src="./app.js"></script>
+    <script>
+      // Smooth scrolling
+      $("a").on("click", function (e) {
+        if (this.hash !== "") {
+          e.preventDefault();
+
+          const hash = this.hash;
+
+          // animate scrolling
+          $("html, body").animate(
+            {
+              scrollTop: $(hash).offset().top,
+            },
+            800
+          );
+        }
+      });
+    </script>
   </body>
 </html>
