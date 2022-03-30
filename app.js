@@ -70,13 +70,15 @@ const APP = (function (UICtrl) {
       .addEventListener("click", doneMobileNav);
 
     // change nav background when scroll
-    document.addEventListener("scroll", (e) => {
+    document.addEventListener("scroll", () => {
       if (window.scrollY >= 150) {
         document.querySelector(UISelectors.navbarShadow).style.opacity = 1;
       } else if (window.scrollY < 150) {
         document.querySelector(UISelectors.navbarShadow).style.opacity = 0;
       }
     });
+
+    // adding active state on Navbar when clicking the links
   };
 
   // Event Functions

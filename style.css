@@ -160,7 +160,7 @@ li {
 }
 
 .sm {
-  font-size: 1.3rem;
+  font-size: max(1.3rem, 1vw);
 }
 
 .darker-cyan {
@@ -209,7 +209,7 @@ nav {
   height: 100%;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.15) 60%,
+    rgba(0, 0, 0, 0.2) 30%,
     rgba(0, 0, 0, 0) 100%
   );
   opacity: 0;
@@ -377,14 +377,42 @@ nav {
   background-image: url(./images/mobile/image-graphic-design.jpg);
   background-size: cover;
   background-position: center;
-  min-height: 760px;
+  min-height: 80vh;
 }
 
 .photography {
   background-image: url(./images/mobile/image-photography.jpg);
   background-size: cover;
   background-position: center;
-  min-height: 760px;
+  min-height: 80vh;
+}
+
+/* # Secion 3: Testimonials */
+
+.testimonial {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 3rem 2.5rem;
+  grid-template-areas:
+    "title"
+    "person-1"
+    "person-2"
+    "person-3";
+}
+
+.testimonial-title {
+  grid-area: title;
+}
+
+.person-1 {
+  grid-area: person-1;
+}
+.person-2 {
+  grid-area: person-2;
+}
+.person-3 {
+  grid-area: person-3;
 }
 
 /* # Media Querries */
@@ -465,6 +493,13 @@ nav {
     align-items: center;
     text-align: center;
     padding: 0 5vw;
+  }
+
+  /* section Testimonial */
+  .testimonial {
+    grid-template-areas:
+      "title title title"
+      "person-1 person-2 person-3";
   }
 }
 
