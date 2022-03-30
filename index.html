@@ -28,27 +28,34 @@
     <header class="header">
       <!-- ## Navigation -->
       <nav>
-        <a href="#" class="logo">
-          <img src="./images/logo.svg" alt="" />
-        </a>
-        <ul class="nav-desktop">
-          <li><a href="#about">About</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Projects</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <div class="hamburger">
-          <div class="line1"></div>
-          <div class="line2"></div>
-          <div class="line3"></div>
-        </div>
-        <div class="nav-mobile">
-          <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#" id="nav-active-mobile">Contact</a></li>
+        <div id="navbar" class="navbar">
+          <div class="navbar-shadow"></div>
+          <a href="#" class="logo">
+            <img src="./images/logo.svg" alt="" />
+          </a>
+          <ul class="nav-desktop">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
+          <div class="hamburger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+          </div>
+          <div class="nav-mobile">
+            <ul>
+              <li><a href="#about" class="mobile-link">About</a></li>
+              <li><a href="#services" class="mobile-link">Services</a></li>
+              <li><a href="#projects" class="mobile-link">Projects</a></li>
+              <li>
+                <a href="#contact" class="mobile-link" id="nav-active-mobile"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
       <!-- ##Header Content -->
