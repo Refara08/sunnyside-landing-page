@@ -1,10 +1,15 @@
 // UI Ctrl -------------------------------------------------------------
 const UICtrl = (function () {
   const UISelectors = {
+    logo: ".logo",
+    footerLogo: ".footer-logo",
     hamburgerBtn: ".hamburger",
     navElement: "nav",
     navbarShadow: ".navbar-shadow",
     navMobile: ".nav-mobile",
+    navDesktop: ".nav-desktop",
+    navMobileLis: ".nav-mobile ul li",
+    navDesktopLis: ".nav-desktop li",
     navMobileActive: ".nav-mobile-active",
     mobileLink: ".mobile-link",
   };
@@ -17,7 +22,11 @@ const UICtrl = (function () {
       const navMobile = document.querySelector(UISelectors.navMobile);
       const hamburger = document.querySelector(UISelectors.hamburgerBtn);
 
-      navMobile.style.display = "block";
+      document.querySelector("nav").style.transform = "none";
+
+      setTimeout(function () {
+        navMobile.style.display = "block";
+      }, 50);
 
       setTimeout(function () {
         navMobile.classList.add("nav-mobile-active");
@@ -35,8 +44,7 @@ const UICtrl = (function () {
         navMobile.style.display = "none";
       }, 100);
     },
-    doneMobileNavUI: function (e) {
-      console.log(e.target);
+    doneMobileNavUI: function () {
       const navMobile = document.querySelector(UISelectors.navMobile);
       const hamburger = document.querySelector(UISelectors.hamburgerBtn);
       navMobile.classList.remove("nav-mobile-active");
@@ -44,6 +52,49 @@ const UICtrl = (function () {
       setTimeout(() => {
         navMobile.style.display = "none";
       }, 100);
+    },
+    activateLinkMobileUI: function (e) {
+      const lisNode = document.querySelectorAll(UISelectors.navMobileLis);
+
+      const lis = Array.from(lisNode);
+
+      lis.forEach((li) => {
+        li.children[0].removeAttribute("id");
+      });
+
+      e.target.id = "nav-active-mobile";
+    },
+
+    activateLinkDesktopUI: function (e) {
+      const lisNodeDesktop = document.querySelectorAll(
+        UISelectors.navDesktopLis
+      );
+
+      const lisDesktop = Array.from(lisNodeDesktop);
+
+      lisDesktop.forEach((li) => {
+        li.children[0].removeAttribute("id");
+      });
+
+      e.target.id = "nav-active-desktop";
+    },
+
+    removeAllActiveStateUI: function (e) {
+      const lisNodeDesktop = document.querySelectorAll(
+        UISelectors.navDesktopLis
+      );
+      const lisNode = document.querySelectorAll(UISelectors.navMobileLis);
+
+      const lisDesktop = Array.from(lisNodeDesktop);
+      const lis = Array.from(lisNode);
+
+      lis.forEach((li) => {
+        li.children[0].removeAttribute("id");
+      });
+
+      lisDesktop.forEach((li) => {
+        li.children[0].removeAttribute("id");
+      });
     },
   };
 })();
@@ -71,14 +122,46 @@ const APP = (function (UICtrl) {
 
     // change nav background when scroll
     document.addEventListener("scroll", () => {
-      if (window.scrollY >= 150) {
+      if (window.scrollY >= 150 && window.scrollY <= 900) {
         document.querySelector(UISelectors.navbarShadow).style.opacity = 1;
+      } else if (window.scrollY > 900) {
+        document.querySelector(UISelectors.navbarShadow).style.opacity = 1;
+
+        if (this.oldScroll > this.scrollY) {
+          // if scrolling up ....
+          // console.log("Scrolling up ....");
+          document.querySelector("nav").style.transform = "none";
+        } else {
+          // if scrolling down ....
+          // console.log("Scrolling down .....");
+          document.querySelector("nav").style.transform = "translateY(-100%)";
+        }
+        this.oldScroll = this.scrollY;
       } else if (window.scrollY < 150) {
         document.querySelector(UISelectors.navbarShadow).style.opacity = 0;
       }
     });
 
     // adding active state on Navbar when clicking the links
+    // #1 mobile (by clicking)
+    document
+      .querySelector(UISelectors.navMobile)
+      .addEventListener("click", activeStateLinkMobile);
+
+    // #1 desktop (by clicking)
+    document
+      .querySelector(UISelectors.navDesktop)
+      .addEventListener("click", activeStateLinkDesktop);
+
+    // Remove active tag link when clicking logo
+    document
+      .querySelector(UISelectors.logo)
+      .addEventListener("click", removeAllActiveState);
+
+    // Remove active tag link when clicking footer logo
+    document
+      .querySelector(UISelectors.footerLogo)
+      .addEventListener("click", removeAllActiveState);
   };
 
   // Event Functions
@@ -92,7 +175,6 @@ const APP = (function (UICtrl) {
 
   //  # close mobile navigation
   const closeMobileNav = (e) => {
-    console.log(e.target);
     if (e.target.classList.contains("hamburger-active")) {
       UICtrl.hideMobileNav();
     }
@@ -106,6 +188,25 @@ const APP = (function (UICtrl) {
     }
   };
 
+  // Active link mobile by clicking link
+  const activeStateLinkMobile = (e) => {
+    if (e.target.className === "mobile-link") {
+      UICtrl.activateLinkMobileUI(e);
+    }
+  };
+
+  // Active link desktop by clicking link
+  const activeStateLinkDesktop = (e) => {
+    if (e.target.className === "desktop-link") {
+      UICtrl.activateLinkDesktopUI(e);
+    }
+  };
+
+  // Remove all active state link desktop or mobile
+  const removeAllActiveState = (e) => {
+    UICtrl.removeAllActiveStateUI(e);
+  };
+
   return {
     init: function () {
       loadEventListeners();
@@ -116,6 +217,8 @@ const APP = (function (UICtrl) {
 // Initialize App
 APP.init();
 
-document.addEventListener("click", (e) => {
-  console.log(e.target);
-});
+// TO DO list
+// 1. kasih current class pas klik link navigasi
+// 2. keluar menu navigasi mobile dengan cara klik X hamburger menu
+//    atau klik luar area nav-mobile, atau scroll kemanapun
+// 3. animasi hamburger to X ketika diklik

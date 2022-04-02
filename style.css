@@ -4,8 +4,9 @@
   --yellow: hsl(51, 100%, 49%);
   --dark-desaturated-cyan: hsl(167, 40%, 24%);
   --dark-blue: hsl(198, 62%, 26%);
-  --dark-moderate-cyan: hsl(168, 34%, 41%);
+  --dark-moderate-cyan: rgb(69, 140, 126);
   --header-color: #3ebfff;
+  --footer-background: #90d4c5;
 
   /* Neutral Color */
   --very-dark-desaturated-blue: hsl(212, 27%, 19%);
@@ -38,6 +39,7 @@ body::-webkit-scrollbar {
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 li {
@@ -61,6 +63,24 @@ li {
   font-size: 1.2rem;
   text-transform: uppercase;
   background-color: var(--yellow);
+}
+
+/* Attributions */
+
+.attribution {
+  background-color: var(--footer-background);
+  padding: 1rem;
+  text-align: center;
+}
+
+.attribution a {
+  display: inline-block;
+  transition: all 300ms ease;
+  color: var(--dark-desaturated-cyan);
+}
+
+.attribution a:hover {
+  color: var(--white);
 }
 
 /* Section Component */
@@ -190,6 +210,7 @@ nav {
   top: 0;
   width: 100vw;
   z-index: 2;
+  transition: all 0.3s ease;
 }
 
 .navbar {
@@ -332,7 +353,8 @@ nav {
   width: min(170px, 30vw);
 }
 
-.logo img {
+.logo img,
+.footer-logo img {
   width: 100%;
   height: auto;
 }
@@ -357,6 +379,14 @@ nav {
   text-transform: uppercase;
   letter-spacing: 8px;
   color: var(--white);
+}
+
+.arrow img {
+  transition: all 0.5s ease;
+}
+
+.arrow img:hover {
+  transform: scale(1.2) translateY(20%);
 }
 
 /* # Section 1: About */
@@ -393,7 +423,8 @@ nav {
   display: grid;
   place-items: center;
   text-align: center;
-  padding: 3rem 2.5rem;
+  padding: 5rem 2.5rem;
+  gap: 2rem;
   grid-template-areas:
     "title"
     "person-1"
@@ -401,8 +432,49 @@ nav {
     "person-3";
 }
 
+.testimonial-card {
+  margin: 2.5rem 0;
+}
+
+.testimonial-card .section-p {
+  color: var(--very-dark-grayish-blue);
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 2.45rem;
+  margin-bottom: 2.5rem;
+}
+
 .testimonial-title {
   grid-area: title;
+
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-weight: 900;
+  font-size: 1.2rem;
+  font-family: var(--font-prime);
+  color: var(--grayish-blue);
+  margin: 2.5rem 0;
+}
+
+.avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-bottom: 3rem;
+}
+
+.client-name {
+  font-family: var(--font-prime);
+  color: var(--very-dark-desaturated-blue);
+  font-weight: 900;
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.client-status {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--grayish-blue);
 }
 
 .person-1 {
@@ -413,6 +485,83 @@ nav {
 }
 .person-3 {
   grid-area: person-3;
+}
+
+/* Section 4: Projects */
+
+.milk-mobile,
+.orange-mobile,
+.cone-mobile,
+.sugar-mobile {
+  display: block;
+}
+
+.milk-desktop,
+.orange-desktop,
+.cone-desktop,
+.sugar-desktop {
+  display: none;
+}
+
+.projects .column {
+  flex: 50%;
+  max-width: 50%;
+}
+
+/* FUUUUUUUUUUUTAAAAAHHHHH */
+
+.footer {
+  padding: 5rem 2rem;
+  background-color: var(--footer-background);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-logo {
+  width: min(200px, 40vw);
+  margin-bottom: 3rem;
+}
+
+.nav-footer,
+.socials {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-footer {
+  width: 100%;
+  margin-bottom: 5rem;
+}
+
+.nav-footer a {
+  color: var(--dark-moderate-cyan);
+  font-weight: 900;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+}
+
+.nav-footer a:hover {
+  color: var(--white);
+}
+
+.socials {
+  width: 50%;
+  margin: 2rem 0;
+}
+
+.socials i {
+  color: var(--dark-desaturated-cyan);
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.socials i:hover {
+  color: #fff;
 }
 
 /* # Media Querries */
@@ -497,14 +646,42 @@ nav {
 
   /* section Testimonial */
   .testimonial {
+    padding: 5rem 10vw;
     grid-template-areas:
       "title title title"
       "person-1 person-2 person-3";
   }
-}
 
-.scroller {
-  height: 50vh;
+  /* Section 4: Projects */
+
+  .milk-mobile,
+  .orange-mobile,
+  .cone-mobile,
+  .sugar-mobile {
+    display: none;
+  }
+
+  .milk-desktop,
+  .orange-desktop,
+  .cone-desktop,
+  .sugar-desktop {
+    display: block;
+  }
+
+  .projects .column {
+    flex: 25%;
+    max-width: 25%;
+  }
+
+  /* Footer */
+
+  .nav-footer {
+    width: 30%;
+  }
+
+  .socials {
+    width: 15%;
+  }
 }
 
 /* Bigger screeen */

@@ -12,6 +12,11 @@
       href="./images/favicon-32x32.png"
     />
 
+    <script
+      src="https://kit.fontawesome.com/a83c7b3631.js"
+      crossorigin="anonymous"
+    ></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -34,10 +39,10 @@
             <img src="./images/logo.svg" alt="" />
           </a>
           <ul class="nav-desktop">
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about" class="desktop-link">About</a></li>
+            <li><a href="#services" class="desktop-link">Services</a></li>
+            <li><a href="#projects" class="desktop-link">Projects</a></li>
+            <li><a href="#contact" class="desktop-link">Contact</a></li>
           </ul>
           <div class="hamburger">
             <div class="line1"></div>
@@ -61,7 +66,9 @@
       <!-- ##Header Content -->
       <div class="header-content">
         <h1>we are creatives</h1>
-        <a href="#about"><img src="./images/icon-arrow-down.svg" alt="" /></a>
+        <a href="#about" class="arrow"
+          ><img src="./images/icon-arrow-down.svg" alt=""
+        /></a>
       </div>
     </header>
     <!-- ###About -->
@@ -123,7 +130,7 @@
     </section>
     <!-- ### Testimonials -->
     <section id="testimonial" class="testimonial">
-      <h3 class="testimonial-title">Client Testimonial</h3>
+      <h3 class="testimonial-title">Client Testimonials</h3>
       <div class="testimonial-card person-1">
         <img src="./images/image-emily.jpg" alt="Emily" class="avatar" />
         <p class="section-p sm">
@@ -154,14 +161,70 @@
         </p>
       </div>
     </section>
-    <div class="scroller"></div>
+    <!-- ### Projects -->
+    <section id="projects" class="projects row">
+      <!-- milk -->
+      <div class="column milk-mobile">
+        <img src="./images/mobile/image-gallery-milkbottles.jpg" alt="" />
+      </div>
+      <div class="column milk-desktop">
+        <img src="./images/desktop/image-gallery-milkbottles.jpg" alt="" />
+      </div>
+      <!-- orange -->
+      <div class="column orange-mobile">
+        <img src="./images/mobile/image-gallery-orange.jpg" alt="" />
+      </div>
+      <div class="column orange-desktop">
+        <img src="./images/desktop/image-gallery-orange.jpg" alt="" />
+      </div>
+      <!-- Cone -->
+      <div class="column cone-mobile">
+        <img src="./images/mobile/image-gallery-cone.jpg" alt="" />
+      </div>
+      <div class="column cone-desktop">
+        <img src="./images/desktop/image-gallery-cone.jpg" alt="" />
+      </div>
+      <!-- sugar -->
+      <div class="column sugar-mobile">
+        <img src="./images/mobile/image-gallery-sugar-cubes.jpg" alt="" />
+      </div>
+      <div class="column sugar-desktop">
+        <img src="./images/desktop/image-gallery-sugarcubes.jpg" alt="" />
+      </div>
+    </section>
+    <!-- ### Footer -->
+    <section id="contact" class="footer">
+      <a href="#header" class="footer-logo">
+        <img src="./images/logo-footer.svg" alt="" />
+      </a>
+      <ul class="nav-footer">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+      </ul>
+      <ul class="socials">
+        <li>
+          <a href="#"><i class="fab fa-facebook-square"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+        </li>
+      </ul>
+    </section>
 
-    <!-- <div class="attribution">
+    <div class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
         >Frontend Mentor</a
-      >. Coded by <a href="#">Your Name Here</a>.
-    </div> -->
+      >. Coded by
+      <a href="https://github.com/Refara08" target="_blank">Gema Refantero</a>.
+    </div>
 
     <script
       src="https://code.jquery.com/jquery-3.5.0.min.js"
